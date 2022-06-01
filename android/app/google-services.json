@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "526768610729",
+    "project_id": "flashapp-e606a",
+    "storage_bucket": "flashapp-e606a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:526768610729:android:dd8b0e5562b9063a54b8b8",
+        "android_client_info": {
+          "package_name": "com.hafsah.flashapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "526768610729-iq5pdvr5qf872uou2k3o3a8n6lor9qop.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANRepf-QKTUV4cA1P5qLkpRWdON_rP0j8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "526768610729-iq5pdvr5qf872uou2k3o3a8n6lor9qop.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
