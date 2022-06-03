@@ -1,5 +1,5 @@
-import 'package:flashapp/screens/chat_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flashapp/screens/chat_screen.dart';
 import '../components.dart';
 import '../constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -10,11 +10,49 @@ class LoginScreen extends StatefulWidget {
   _LoginScreenState createState() => _LoginScreenState();
 }
 
+// class _LoginScreenState extends State<LoginScreen> {
+//   static String id = 'Login Screen';
+//   bool loading = false;
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//         body: Center(
+//       child: Material(
+//         elevation: 5.0,
+//         color: Colors.blueAccent,
+//         borderRadius: BorderRadius.circular(30.0),
+//         child: MaterialButton(
+//           onPressed: () async {
+//             setState(() {
+//               loading = true;
+//             });
+//             try {
+//               await Future.delayed(Duration(seconds: 4), () {});
+//             } catch (e) {
+//               print(e);
+//             }
+//             setState(() {
+//               loading = false;
+//             });
+//           },
+//           minWidth: 200.0,
+//           height: 42.0,
+//           child: Text(
+//             loading ? 'loading' : 'g',
+//              but it worked here
+//           ),
+//         ),
+//       ),
+//     ));
+//   }
+//}
+
 class _LoginScreenState extends State<LoginScreen> {
   String email = '';
   String pw = '';
   final _auth = FirebaseAuth.instance;
   bool loading = false;
+  String buttonText = 'login';
   @override
   Widget build(BuildContext context) {
     bool loading = false;
@@ -62,28 +100,34 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 24.0,
                 ),
                 ClickButton(
-                  color: Colors.lightBlueAccent,
-                  function: () async {
-                    setState(() {
-                      loading = true;
-                    });
-                    try {
-                      final existingUser =
-                          await _auth.signInWithEmailAndPassword(
-                              email: email, password: pw);
-                      if (existingUser != null) {
-                        Navigator.pushNamed(context, ChatScreen.id);
+                    color: Colors.lightBlueAccent,
+                    function: () async {
+                      try {
+                        setState(() {
+                          loading = true;
+                          buttonText = 'loading';
+                        });
+                        final existingUser =
+                            await _auth.signInWithEmailAndPassword(
+                                email: email, password: pw);
+                        if (existingUser != null) {
+                          Navigator.pushNamed(context, ChatScreen.id);
+                          print(loading);
+                        }
+                      } catch (e) {
+                        print(loading);
+                        print(e);
                       }
-                    } catch (e) {
-                      print(e);
-                    }
-                    setState(() {
-                      loading = false;
-                    });
-                  },
-                  text: 'Log In',
-                ),
-                Text(loading ? 'loading' : '')
+                      setState(() {
+                        loading = false;
+                        buttonText = 'login';
+                      });
+                      print(loading);
+                    },
+                    text: buttonText
+                    // text: loading ? 'loading' : 'login',
+                    // loading has been set back to false? can't explain
+                    ),
               ],
             ),
           ),
